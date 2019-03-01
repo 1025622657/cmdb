@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css"></link>
+</head>
+<body>
+    <div style="width: 700px;margin: 0 auto">
+        <h3>IDC列表</h3>
+        {% include 'nb-tpl.html' %}
+    </div>
+    <script src="/static/jquery-3.2.1.js"></script>
+    <script src="/static/nb-list.js"></script>
+    <script>
+        $.xx('/backend/idc_json.html');
+        /*$(function(){
+
+            //数据在上面有的时候，才能绑定事件
+            $('#tbBody').find(':checkbox').click(function(){
+                $(this).val();
+            })
+
+            //以委托的形式加载数据，后面才加载的数据，用这种形式
+            $('#tbBody').on('click',':checkbox',function(){
+                //$(this)为checkbox标签;
+                alert('123')
+            })
+        })*/
+
+
+    </script>
+</body>
+</html>

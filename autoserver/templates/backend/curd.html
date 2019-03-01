@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css"></link>
+</head>
+<body>
+<div style="width: 700px;margin: 0 auto">
+    <h3>服务器列表</h3>
+    <div>
+
+        <div class="search-list clearfix" style="position: relative">
+           {#搜索按钮#}
+            <div class="search-btn col-md-offset-10 col-md-2" style="position: absolute;bottom: 1px;right: -10px;text-align: center">
+                <input id="doSearch" type="button" class="btn btn-primary" value="搜索">
+            </div>
+
+            {#搜索框#}
+            <div class="search-item col-md-offset-2 col-md-8 clearfix" style="position: relative;height: 35px;">
+                {#+号#}
+                <div style="position: absolute;left: 0;width: 38px">
+                    <a type="button" class="btn btn-default add-search-condition">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+               {#选择搜索类型#}
+                <div class="input-group searchArea" style="position: absolute;left: 40px;right:100px;" >
+                    <div class="input-group-btn " >
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"><span class="searchDefault">机柜号</span> <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                            {#                <li><a href="#">Action</a></li>#}
+                            </ul>
+                    </div><!-- /btn-group -->
+
+{#                    <input type="text" class="form-control" aria-label="...">#}
+                </div><!-- /input-group -->
+
+
+            </div>
+
+
+        </div>
+
+        {#1.获取input框或select框：name,value后通过Ajax发到后台        #}
+    </div>
+
+
+    <div class="btn-group" role="group" aria-label="...">
+        <button id="checkAll" type="button" class="btn btn-default">全选</button>
+        <button id="checkReverse" type="button" class="btn btn-default">反选</button>
+        <button id="checkCancel" type="button" class="btn btn-default">取消</button>
+        <button id="inOutEditMode" type="button" class="btn btn-default btn-warnig">进入编辑模式</button>
+        <a class="btn btn-default" href="#">添加</a>
+        <button id="multiDel" type="button" class="btn btn-default">删除</button>
+        <button id="refresh" type="button" class="btn btn-default">刷新</button>
+        <button id="save" type="button" class="btn btn-default">保存</button>
+
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead id="tbHead">
+        </thead>
+        <tbody id="tbBody">
+        </tbody>
+    </table>
+</div>
+<script src="/static/jquery-3.2.1.js"></script>
+<script src="/static/nb-list.js"></script>
+<script src="/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script>
+    $.xx('/backend/curd_json.html');
+    /*$(function(){
+
+        //数据在上面有的时候，才能绑定事件
+        $('#tbBody').find(':checkbox').click(function(){
+            $(this).val();
+        })
+
+        //以委托的形式加载数据，后面才加载的数据，用这种形式
+        $('#tbBody').on('click',':checkbox',function(){
+            //$(this)为checkbox标签;
+            alert('123')
+        })
+    })*/
+
+
+</script>
+</body>
+</html>

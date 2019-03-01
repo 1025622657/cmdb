@@ -1,0 +1,141 @@
+{#拆线型图表--参数固定获取显示#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="i1"></div>
+    <script src="/static/jquery-3.2.1.js"></script>
+    <script src="/static/Highcharts-6.1.0/Highcharts-6.1.0/code/highcharts.js"></script>
+    <script>
+        Highcharts.setOptions({
+            //全局配置，UTC时间为false表示不使用，即使用东八区
+            global:{
+                useUTC:false
+            }
+        });
+
+        //创建图表对象
+        var chart = new Highcharts.Chart('i1',{
+            //大标题
+            title:{
+                text:'大标题',
+                x:0 //x=100,x=-100表示x轴，即左右移动
+            },
+
+            //小标题
+            subtitle:{
+                text:'数据来源：www.baidu.com',
+                x:0 //x=100,x=-100表示x轴，即左右移动
+            },
+            chart:{
+                events:{
+                    load:function(e){
+                        //图标加载时，执行的函数，
+                        //即框架加载完成时执行
+                    }
+                }
+            },
+            //右下角的百度链接，不设置则默认显示
+            credits:{
+                cnable:true,
+                position:{
+                  align:'right',
+                  verticalAlign:'bottom',
+                },
+                text:'百度',
+                href:'http://www.baidu.com'
+            },
+            //线-说明样式，不设置则默认显示
+            legend:{
+                layout:'vertical',//垂直排列
+                align:'right',//右则
+                verticalAlign:'middle',//位置
+                borderWidth:1//边框宽度
+            },
+            //x轴
+            xAxis:{
+                //适用于固定的X轴
+                categories:['一月','二月','三月','四月','五月','六月'],
+                /*
+                type:'datetime',
+                labels:{
+                    formatter:function(){
+                      return Highcharts.dateFormat('%Y-%m-%d %H:%M:%S',this.value);
+                    },
+                    rotation:30
+                }
+                */
+            },
+            //y轴，不设置则默认为values
+            yAxis:{
+                title:{
+                    text:'数值'
+                }
+            },
+
+            //鼠标移动到每条线上的时，样式的显示,定制则通过如下修改，默认与如下同
+            tooltip:{
+                //valueSuffix:'个',
+                //xDateFormat:'%Y-%m-%d %H:%M:%S',
+                pointFormatter:function(e){
+                    var tpl = '<span style="color:>' + this.series.color + '">●</span>'+this.series.name + ':<b>'+this.y+'个</b><br/>';
+                    return tpl;
+                },
+                valueDecimals:1,
+                useHTML:true
+            },
+            //点击每条线上的点时绑定事件，
+            plotOptions:{
+                series:{
+                    cursor:'pointer',
+                    events:{
+                        click:function(event){
+                            //点击某个指定点时，执行的事件
+                            console.log(this.name,event.point.x,event.point.y);
+                        }
+                    }
+                }
+            },
+            //x轴数据
+            series:[{
+                name:'京东',
+                data:[7.0,6.9,9.5,14.5,18.2,21.5,25.2]
+                /*data:[
+                    [1501689804077.358,8.0],
+                    [1501689804077.358,6.9],
+                    [1501689804077.358,16.9],
+                    [1501689804077.358,11.9],
+                ]*/
+            },
+                {
+                name:'洛杉矶',
+                data:[5.0,3.9,4.5,7.5,9.2,8.5,20.2]
+                /*data:[
+                    [1501689804077.358,18.0],
+                    [1501689804077.358,16.9],
+                    [1501689804077.358,26.9],
+                    [1501689804077.358,9.9],
+                ]*/
+            },
+            ]
+
+            });
+
+        //chart.addSeries({name:'上海',data:[2.5,3.5,4.5,5.5,6.8]})//动态添加一组数据
+        //参数：数值；是否重绘；isShift；是否动画
+        //chart.series[0].addPoint(18);动态添加一个点
+
+        //chart.series[0].addPoint([12]);
+        //chart.series[0].addPoint([v.x,v.y]);
+        //参数：是否重绘
+        //chart.series[0].remove(false);
+        //更新饼图
+        //$('#id1').highcharts().series[0].data[0].update({x:0,y:100})
+
+    </script>
+</body>
+</html>

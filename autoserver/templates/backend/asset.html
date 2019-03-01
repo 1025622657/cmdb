@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.css"></link>
+</head>
+<body>
+    <div style="width: 700px;margin: 0 auto">
+        <h3>资产列表</h3>
+        {% include 'nb-search.html' %}
+        {% include 'nb-tpl.html' %}
+    </div>
+    <script src="/static/jquery-3.2.1.js"></script>
+    #导入bootstrap，js文件
+    <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="/static/nb-list.js"></script>
+    <script>
+        $.xx('/backend/asset_json.html');
+    </script>
+</body>
+</html>
